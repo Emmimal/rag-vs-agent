@@ -1,0 +1,200 @@
+======================================================================
+A1 (knowledge): What are the main chunking strategies discussed in the RAG material?
+======================================================================
+
+RAG
+  Retrieved:      YES
+  Self-reported:  PASS
+  Ground truth:   PASS
+
+Agent
+  Steps:          none
+  Self-reported:  FAIL  (no action required, and this planner has no corpus access to answer a knowledge question)
+  Ground truth:   PASS
+  >>> MISMATCH: self-report disagrees with ground truth
+
+Hybrid (RAG + Agent)
+  Retrieved:      ['Top Chunking Strategies to Boost Yo', 'Top Chunking Strategies to Boost Yo', 'Top Chunking Strategies to Boost Yo']
+  Steps:          none
+  Self-reported:  PASS
+  Ground truth:   PASS
+
+======================================================================
+A2 (knowledge): What approaches does the Data Science material describe for handling missing values?
+======================================================================
+
+RAG
+  Retrieved:      YES
+  Self-reported:  PASS
+  Ground truth:   PASS
+
+Agent
+  Steps:          none
+  Self-reported:  FAIL  (no action required, and this planner has no corpus access to answer a knowledge question)
+  Ground truth:   PASS
+  >>> MISMATCH: self-report disagrees with ground truth
+
+Hybrid (RAG + Agent)
+  Retrieved:      ['How to Handle Missing Values in Dat', 'How to Handle Missing Values in Dat', 'How to Handle Missing Values in Dat']
+  Steps:          none
+  Self-reported:  PASS
+  Ground truth:   PASS
+
+======================================================================
+A3 (knowledge): What is the difference between try, except, else, and finally in Python?
+======================================================================
+
+RAG
+  Retrieved:      YES
+  Self-reported:  PASS
+  Ground truth:   PASS
+
+Agent
+  Steps:          none
+  Self-reported:  FAIL  (no action required, and this planner has no corpus access to answer a knowledge question)
+  Ground truth:   PASS
+  >>> MISMATCH: self-report disagrees with ground truth
+
+Hybrid (RAG + Agent)
+  Retrieved:      ['Define and Call Functions in Python', 'Exception and Error Handling in Pyt', 'Exception and Error Handling in Pyt']
+  Steps:          none
+  Self-reported:  PASS
+  Ground truth:   PASS
+
+======================================================================
+B1 (action): Assign T101 to Alice and set its priority to high.
+======================================================================
+
+RAG
+  Retrieved:      YES
+  Self-reported:  FAIL
+  Ground truth:   FAIL  (T101.assigned_to: expected 'Alice', got None; T101.priority: expected 'high', got 'normal')
+
+Agent
+  Steps:          [('change_priority', 'high', True)]
+  Self-reported:  PASS
+  Ground truth:   FAIL  (T101.assigned_to: expected 'Alice', got None)
+  >>> MISMATCH: self-report disagrees with ground truth
+
+Hybrid (RAG + Agent)
+  Retrieved:      ['Python Dictionaries: The Ultimate G', 'Python Dictionaries: The Ultimate G', 'How to perform data analysis using ']
+  Steps:          [('change_priority', 'high', True)]
+  Self-reported:  PASS
+  Ground truth:   FAIL  (T101.assigned_to: expected 'Alice', got None)
+  >>> MISMATCH: self-report disagrees with ground truth
+
+======================================================================
+B2 (action): Change T101's status to resolved.
+======================================================================
+
+RAG
+  Retrieved:      YES
+  Self-reported:  FAIL
+  Ground truth:   FAIL  (T101.status: expected 'resolved', got 'open')
+
+Agent
+  Steps:          [('change_status', 'resolved', True)]
+  Self-reported:  PASS
+  Ground truth:   PASS
+
+Hybrid (RAG + Agent)
+  Retrieved:      ['Simple Steps to Resolve GitHub Issu', 'Simple Steps to Resolve GitHub Issu', 'How to Handle Missing Values in Dat']
+  Steps:          [('change_status', 'resolved', True)]
+  Self-reported:  PASS
+  Ground truth:   PASS
+
+======================================================================
+B3 (action): Move T103 to in_progress status and assign it to Priya.
+======================================================================
+
+RAG
+  Retrieved:      YES
+  Self-reported:  FAIL
+  Ground truth:   FAIL  (T103.status: expected 'in_progress', got 'open'; T103.assigned_to: expected 'Priya', got None)
+
+Agent
+  Steps:          [('assign_ticket', 'Priya', True)]
+  Self-reported:  PASS
+  Ground truth:   FAIL  (T103.status: expected 'in_progress', got 'open')
+  >>> MISMATCH: self-report disagrees with ground truth
+
+Hybrid (RAG + Agent)
+  Retrieved:      ['Python Dictionaries: The Ultimate G', 'Python Dictionaries: The Ultimate G', 'How to Create Python Modules']
+  Steps:          [('assign_ticket', 'Priya', True)]
+  Self-reported:  PASS
+  Ground truth:   FAIL  (T103.status: expected 'in_progress', got 'open')
+  >>> MISMATCH: self-report disagrees with ground truth
+
+======================================================================
+C1 (knowledge_action): T101 is returning irrelevant chunks. Determine the appropriate category from the knowledge base and update the ticket.
+======================================================================
+
+RAG
+  Retrieved:      YES
+  Self-reported:  FAIL
+  Ground truth:   FAIL  (T101.category: expected 'retrieval', got None)
+
+Agent
+  Steps:          [('set_category', None, 'NOT AVAILABLE - requires knowledge base, agent has no corpus access')]
+  Self-reported:  FAIL  (task requires knowledge this planner cannot retrieve)
+  Ground truth:   FAIL  (T101.category: expected 'retrieval', got None)
+
+Hybrid (RAG + Agent)
+  Retrieved:      ['What is Retrieval-Augmented Generat', 'What is Retrieval-Augmented Generat', 'How to Handle Missing Values in Dat']
+  Steps:          [('set_category', 'retrieval', True)]
+  Self-reported:  PASS
+  Ground truth:   PASS
+
+======================================================================
+C2 (knowledge_action): T103 has a data quality problem related to missing values in the dataset. Determine the appropriate category using the knowledge base and update the ticket.
+======================================================================
+
+RAG
+  Retrieved:      YES
+  Self-reported:  FAIL
+  Ground truth:   FAIL  (T103.category: expected 'data-quality', got None)
+
+Agent
+  Steps:          [('set_category', None, 'NOT AVAILABLE - requires knowledge base, agent has no corpus access')]
+  Self-reported:  FAIL  (task requires knowledge this planner cannot retrieve)
+  Ground truth:   FAIL  (T103.category: expected 'data-quality', got None)
+
+Hybrid (RAG + Agent)
+  Retrieved:      ['What is Retrieval-Augmented Generat', 'How to Handle Missing Values in Dat', 'Exploratory Data Analysis top 10 Py']
+  Steps:          [('set_category', 'data-quality', True)]
+  Self-reported:  PASS
+  Ground truth:   PASS
+
+======================================================================
+C3 (knowledge_action): T104 is failing due to an unhandled exception in the processing script. Determine the appropriate category from the knowledge base and update the ticket.
+======================================================================
+
+RAG
+  Retrieved:      YES
+  Self-reported:  FAIL
+  Ground truth:   FAIL  (T104.category: expected 'code-quality', got None)
+
+Agent
+  Steps:          [('set_category', None, 'NOT AVAILABLE - requires knowledge base, agent has no corpus access')]
+  Self-reported:  FAIL  (task requires knowledge this planner cannot retrieve)
+  Ground truth:   FAIL  (T104.category: expected 'code-quality', got None)
+
+Hybrid (RAG + Agent)
+  Retrieved:      ['What is Retrieval-Augmented Generat', 'How to Create Python Modules', 'Exception and Error Handling in Pyt']
+  Steps:          [('set_category', 'code-quality', True)]
+  Self-reported:  PASS
+  Ground truth:   PASS
+
+======================================================================
+SUMMARY (ground truth)
+======================================================================
+ID   Category          RAG     Agent   Hybrid  
+A1   knowledge         PASS    PASS    PASS    
+A2   knowledge         PASS    PASS    PASS    
+A3   knowledge         PASS    PASS    PASS    
+B1   action            FAIL    FAIL    FAIL    
+B2   action            FAIL    PASS    PASS    
+B3   action            FAIL    FAIL    FAIL    
+C1   knowledge_action  FAIL    FAIL    PASS    
+C2   knowledge_action  FAIL    FAIL    PASS    
+C3   knowledge_action  FAIL    FAIL    PASS    
